@@ -16,6 +16,9 @@
 		]
 	},
 	"callback": "MediaWiki\\Extension\\LDAPUserInfo\\Setup::onRegistration",
+	"Hooks": {
+		"UserLoggedIn": "MediaWiki\\Extension\\LDAPUserInfo\\Hook\\UserLoggedIn\\SyncUseInfo::callback"
+	},
 	"load_composer_autoloader" : true,
 	"manifest_version": 2
 }
