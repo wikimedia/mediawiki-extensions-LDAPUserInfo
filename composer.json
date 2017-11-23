@@ -1,7 +1,7 @@
 {
 	"name": "mediawiki/ldap-user-info",
 	"extra": {
-		"mw-name": "LDAPUserInfo"
+		"installer-name": "LDAPUserInfo"
 	},
 	"license": "GPL-2.0+",
 	"type": "mediawiki-extension",
