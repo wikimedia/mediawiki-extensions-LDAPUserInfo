@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\LDAPUserInfo;
 
-class Config extends \GlobalVarConfig {
-
+class Config {
+	const DOMAINCONFIG_SECTION = 'userinfo';
+	const ATTRIBUTES_MAP = 'attributes-map';
 }

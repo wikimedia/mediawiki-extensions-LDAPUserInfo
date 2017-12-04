@@ -15,9 +15,21 @@
 			"i18n"
 		]
 	},
-	"callback": "MediaWiki\\Extension\\LDAPUserInfo\\Setup::onRegistration",
 	"Hooks": {
-		"UserLoggedIn": "MediaWiki\\Extension\\LDAPUserInfo\\Hook\\UserLoggedIn\\SyncUseInfo::callback"
+		"UserLoggedIn": "MediaWiki\\Extension\\LDAPUserInfo\\Hook\\UserLoggedIn\\SyncUserInfo::callback"
+	},
+	"attributes": {
+		"LDAPProvider": {
+			"DefaultSettings": {
+				"userinfo": {
+					"attributes-map": {
+						"email": "mail",
+						"realname": "cn",
+						"nickname": "samaccountname"
+					}
+				}
+			}
+		}
 	},
 	"load_composer_autoloader" : true,
 	"manifest_version": 2
