@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\LDAPUserInfo\Hook\UserLoggedIn;
 
 use MediaWiki\Extension\LDAPUserInfo\Config;
 use MediaWiki\Extension\LDAPUserInfo\UserInfoQuery;
-use MediaWiki\Extension\LDAPUserInfo\Config;
 
 class SyncUserInfo extends \MediaWiki\Extension\LDAPProvider\Hook\UserLoggedIn {
 
