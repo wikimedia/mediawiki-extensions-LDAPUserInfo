@@ -32,8 +32,8 @@
 	],
 	"autoload" : {
 		"psr-4": {
-			"MediaWiki\\Extension\\LDAPUserInfo\\Tests\\" : "tests/phpunit",
-			"MediaWiki\\Extension\\LDAPUserInfo\\" : "src"
+			"MediaWiki\\Extensions\\LDAPUserInfo\\Tests\\" : "tests/phpunit",
+			"MediaWiki\\Extensions\\LDAPUserInfo\\" : "src"
 		}
 	},
 	"require": {
