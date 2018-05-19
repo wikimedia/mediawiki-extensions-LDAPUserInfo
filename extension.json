@@ -15,6 +15,10 @@
 			"i18n"
 		]
 	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\LDAPUserInfo\\Tests\\" : "tests/phpunit",
+		"MediaWiki\\Extension\\LDAPUserInfo\\" : "src"
+	},
 	"Hooks": {
 		"UserLoggedIn": "MediaWiki\\Extension\\LDAPUserInfo\\Hook\\UserLoggedIn\\SyncUserInfo::callback"
 	},
