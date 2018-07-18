@@ -15,26 +15,18 @@
 			"i18n"
 		]
 	},
-	"AutoloadNamespaces": {
-		"MediaWiki\\Extension\\LDAPUserInfo\\Tests\\" : "tests/phpunit/",
-		"MediaWiki\\Extension\\LDAPUserInfo\\" : "src/"
-	},
 	"Hooks": {
 		"UserLoggedIn": "MediaWiki\\Extension\\LDAPUserInfo\\Hook\\UserLoggedIn\\SyncUserInfo::callback"
 	},
-	"attributes": {
-		"LDAPProvider": {
-			"DefaultSettings": {
-				"userinfo": {
-					"attributes-map": {
-						"email": "mail",
-						"realname": "cn",
-						"nickname": "samaccountname"
-					}
-				}
+	"LDAPProviderDefaultSettings": {
+		"userinfo": {
+			"attributes-map": {
+				"email": "mail",
+				"realname": "cn",
+				"nickname": "samaccountname"
 			}
 		}
 	},
 	"load_composer_autoloader" : true,
-	"manifest_version": 2
+	"manifest_version": 1
 }
