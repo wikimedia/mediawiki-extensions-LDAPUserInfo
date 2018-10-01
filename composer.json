@@ -43,5 +43,11 @@
 		"test": [
 			"parallel-lint . --exclude vendor --exclude node_modules"
 		]
+	},
+	"autoload" : {
+		"psr-4": {
+			"MediaWiki\\Extension\\LDAPUserInfo\\Tests\\" : "tests/phpunit",
+			"MediaWiki\\Extension\\LDAPUserInfo\\" : "src"
+		}
 	}
 }
