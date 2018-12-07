@@ -31,11 +31,21 @@
 				"userinfo": {
 					"attributes-map": {
 						"email": "mail",
-						"realname": "cn",
-						"nickname": "samaccountname"
-					}
+						"realname": "cn"
+					},
+					"generic-property-normalization-callbacks": {}
 				}
 			}
+		}
+	},
+	"config_prefix": "LDAPUserInfo",
+	"config": {
+		"ModifierRegistry": {
+			"value": {
+				"realname": "MediaWiki\\Extension\\LDAPUserInfo\\UserInfoModifier\\Realname::factory",
+				"email": "MediaWiki\\Extension\\LDAPUserInfo\\UserInfoModifier\\Email::factory",
+				"property.*": "MediaWiki\\Extension\\LDAPUserInfo\\UserInfoModifier\\GenericProperty::factory"
+            }
 		}
 	},
 	"load_composer_autoloader" : true,
