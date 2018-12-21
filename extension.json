@@ -19,8 +19,8 @@
 		]
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Extension\\LDAPUserInfo\\Tests\\" : "tests/phpunit/",
-		"MediaWiki\\Extension\\LDAPUserInfo\\" : "src/"
+		"MediaWiki\\Extension\\LDAPUserInfo\\Tests\\": "tests/phpunit/",
+		"MediaWiki\\Extension\\LDAPUserInfo\\": "src/"
 	},
 	"Hooks": {
 		"UserLoggedIn": "MediaWiki\\Extension\\LDAPUserInfo\\Hook\\UserLoggedIn\\SyncUserInfo::callback"
@@ -45,9 +45,9 @@
 				"realname": "MediaWiki\\Extension\\LDAPUserInfo\\UserInfoModifier\\Realname::factory",
 				"email": "MediaWiki\\Extension\\LDAPUserInfo\\UserInfoModifier\\Email::factory",
 				"property.*": "MediaWiki\\Extension\\LDAPUserInfo\\UserInfoModifier\\GenericProperty::factory"
-            }
+			}
 		}
 	},
-	"load_composer_autoloader" : true,
+	"load_composer_autoloader": true,
 	"manifest_version": 2
 }
