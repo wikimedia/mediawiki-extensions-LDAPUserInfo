@@ -11,7 +11,10 @@
 	"license-name": "GPL-2.0",
 	"type": "other",
 	"requires": {
-		"MediaWiki": ">= 1.31.0"
+		"MediaWiki": ">= 1.31.0",
+		"extensions": {
+			"LDAPProvider": "1.0.1"
+		}
 	},
 	"MessagesDirs": {
 		"LDAPUserInfo": [
@@ -23,7 +26,7 @@
 		"MediaWiki\\Extension\\LDAPUserInfo\\" : "src/"
 	},
 	"Hooks": {
-		"UserLoggedIn": "MediaWiki\\Extension\\LDAPUserInfo\\Hook\\UserLoggedIn\\SyncUserInfo::callback"
+		"UserLoadAfterLoadFromSession": "MediaWiki\\Extension\\LDAPUserInfo\\Hook\\UserLoadAfterLoadFromSession\\SyncUserInfoAfterLoadSession::callback"
 	},
 	"attributes": {
 		"LDAPProvider": {
@@ -45,7 +48,7 @@
 				"realname": "MediaWiki\\Extension\\LDAPUserInfo\\UserInfoModifier\\Realname::factory",
 				"email": "MediaWiki\\Extension\\LDAPUserInfo\\UserInfoModifier\\Email::factory",
 				"property.*": "MediaWiki\\Extension\\LDAPUserInfo\\UserInfoModifier\\GenericProperty::factory"
-            }
+			}
 		}
 	},
 	"load_composer_autoloader" : true,
