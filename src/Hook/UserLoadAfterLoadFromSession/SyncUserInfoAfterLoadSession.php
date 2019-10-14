@@ -15,6 +15,8 @@ class SyncUserInfoAfterLoadSession extends UserLoadAfterLoadFromSession {
 	 * @throws \ConfigException
 	 */
 	protected function doSync() {
+		$this->user->loadFromDatabase();
+
 		$process = new UserInfoSyncProcess(
 			$this->user,
 			$this->domainConfig,
