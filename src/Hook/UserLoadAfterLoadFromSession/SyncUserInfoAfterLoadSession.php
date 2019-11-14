@@ -16,7 +16,9 @@ class SyncUserInfoAfterLoadSession extends UserLoadAfterLoadFromSession {
 	 * @throws \ConfigException
 	 */
 	protected function doSync() {
+		$this->user->clearInstanceCache();
 		$this->user->loadFromDatabase();
+		$this->user->getOptions( User::GETOPTIONS_EXCLUDE_DEFAULTS );
 
 		$process = new UserInfoSyncProcess(
 			$this->user,
