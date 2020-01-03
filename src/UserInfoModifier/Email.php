@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\LDAPUserInfo\UserInfoModifier;
 
-use \Status;
+use Status;
 
 class Email extends Base {
 

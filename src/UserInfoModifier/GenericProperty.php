@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\LDAPUserInfo\UserInfoModifier;
 
-use \Status;
+use Status;
 use MediaWiki\Extension\LDAPUserInfo\Config;
 
 class GenericProperty extends Base {
