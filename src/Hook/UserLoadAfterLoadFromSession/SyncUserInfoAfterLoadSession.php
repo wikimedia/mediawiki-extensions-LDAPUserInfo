@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\LDAPUserInfo\Hook\UserLoadAfterLoadFromSession;
 
 use MediaWiki\Extension\LDAPProvider\Hook\UserLoadAfterLoadFromSession;
-use MediaWiki\Extension\LDAPUserInfo\UserInfoSyncProcess;
 use MediaWiki\Extension\LDAPUserInfo\Config;
+use MediaWiki\Extension\LDAPUserInfo\UserInfoSyncProcess;
 
 class SyncUserInfoAfterLoadSession extends UserLoadAfterLoadFromSession {
 

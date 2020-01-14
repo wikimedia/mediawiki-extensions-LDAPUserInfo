@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\LDAPUserInfo;
 
-use MediaWiki\Extension\LDAPProvider\Client;
-use Status;
 use Exception;
-use MWException;
+use MediaWiki\Extension\LDAPProvider\Client;
 use MediaWiki\Logger\LoggerFactory;
+use MWException;
+use Status;
 
 class UserInfoSyncProcess {
 
