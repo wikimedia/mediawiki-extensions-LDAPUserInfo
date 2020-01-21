@@ -2,13 +2,15 @@
 
 namespace MediaWiki\Extension\LDAPUserInfo\UserInfoModifier;
 
+use MediaWiki\Extension\LDAPUserInfo\IUserInfoConditionalModifier;
 use Status;
+use User;
 
-class Email extends Base {
+class Email extends Base implements IUserInfoConditionalModifier {
 
 	/**
 	 *
-	 * @param \User $user
+	 * @param User $user
 	 * @param string $rawValue
 	 * @return Status
 	 */
@@ -17,4 +19,10 @@ class Email extends Base {
 		return Status::newGood();
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	public function shouldModifyUserInfo( $user, $rawValue ) {
+		return $user->getEmail() !== $rawValue;
+	}
 }

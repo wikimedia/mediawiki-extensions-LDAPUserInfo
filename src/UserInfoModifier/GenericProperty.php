@@ -2,10 +2,14 @@
 
 namespace MediaWiki\Extension\LDAPUserInfo\UserInfoModifier;
 
+use ConfigException;
 use MediaWiki\Extension\LDAPUserInfo\Config;
+use MediaWiki\Extension\LDAPUserInfo\IUserInfoConditionalModifier;
+use MediaWiki\Extension\LDAPUserInfo\IUserInfoModifier;
 use Status;
+use User;
 
-class GenericProperty extends Base {
+class GenericProperty extends Base implements IUserInfoConditionalModifier {
 
 	/**
 	 *
@@ -27,7 +31,7 @@ class GenericProperty extends Base {
 	 *
 	 * @param string $mappingKey e.g. "property.gender"
 	 * @param \Config $domainConfig
-	 * @return MediaWiki\Extension\LDAPUserInfo\IUserInfoModifier
+	 * @return IUserInfoModifier
 	 */
 	public static function factory( $mappingKey, $domainConfig ) {
 		$mappingKeyParts = explode( '.', $mappingKey, 2 );
@@ -35,12 +39,29 @@ class GenericProperty extends Base {
 	}
 
 	/**
-	 *
-	 * @param \User $user
+	 * @param User $user
 	 * @param string $rawValue
 	 * @return Status
+	 * @throws ConfigException
 	 */
 	public function modifyUserInfo( $user, $rawValue ) {
+		$user->setOption( $this->propertyName, $this->getNormalizedValue( $rawValue ) );
+		return Status::newGood();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function shouldModifyUserInfo( $user, $rawValue ) {
+		return $user->getOption( $this->propertyName ) !== $this->getNormalizedValue( $rawValue );
+	}
+
+	/**
+	 * @param string $rawValue
+	 * @return string
+	 * @throws ConfigException
+	 */
+	protected function getNormalizedValue( $rawValue ) {
 		$normalizationCallbacks = $this->domainConfig->get(
 			Config::GENERIC_PROPERTY_NORMALIZATION_CALLBACKS
 		);
@@ -52,8 +73,6 @@ class GenericProperty extends Base {
 			}
 		}
 
-		$user->setOption( $this->propertyName,  $value );
-		return Status::newGood();
+		return $value;
 	}
-
 }
