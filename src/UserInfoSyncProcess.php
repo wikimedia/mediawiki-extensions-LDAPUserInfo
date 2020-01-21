@@ -58,14 +58,23 @@ class UserInfoSyncProcess {
 	 * @return Status
 	 */
 	public function run() {
-		$this->status = Status::newGood();
+		$exception = null;
 		try {
 			$this->doSync();
+		} catch ( MWException $ex ) {
+			// For some reason, Exception catch block does not catch MWException
+			$exception = $ex;
 		} catch ( Exception $ex ) {
-			$this->status = Status::newFatal( $ex->getMessage() );
+			$exception = $ex;
 		}
 
-		return $this->status;
+		if ( $exception ) {
+			$logger = LoggerFactory::getInstance( 'LDAPUserInfo' );
+			$logger->error( $exception->getMessage() );
+			return Status::newFatal( $exception->getMessage() );
+		}
+
+		return Status::newGood();
 	}
 
 	/**
@@ -79,6 +88,7 @@ class UserInfoSyncProcess {
 		$userInfo = $this->client->getUserInfo( $this->user->getName() );
 		$attributesMap = $this->domainConfig->get( Config::ATTRIBUTES_MAP );
 		$modifierRegistry = $this->callbackRegistry;
+		$hasChanges = false;
 
 		foreach ( $attributesMap as $modifierKey => $ldapAttribute ) {
 			if ( !isset( $userInfo[$ldapAttribute] ) ) {
@@ -107,14 +117,18 @@ class UserInfoSyncProcess {
 					. "implement `IUserInfoModifier`!" );
 			}
 
-			$logger->info( "Set '$origModifierKey' with raw value {$userInfo[$ldapAttribute]}" );
-			$modifier->modifyUserInfo( $this->user, $userInfo[$ldapAttribute] );
+			if (
+				!$modifier instanceof IUserInfoConditionalModifier ||
+				$modifier->shouldModifyUserInfo( $this->user, $userInfo[$ldapAttribute ] )
+			) {
+				$hasChanges = true;
+				$logger->info( "Set '$origModifierKey' with raw value {$userInfo[$ldapAttribute]}" );
+				$modifier->modifyUserInfo( $this->user, $userInfo[$ldapAttribute] );
+			}
 		}
 
-		try {
+		if ( $hasChanges ) {
 			$this->user->saveSettings();
-		} catch ( MWException $ex ) {
-			return true;
 		}
 
 		return true;

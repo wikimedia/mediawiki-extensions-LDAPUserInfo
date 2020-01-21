@@ -2,9 +2,10 @@
 
 namespace MediaWiki\Extension\LDAPUserInfo\UserInfoModifier;
 
-use \Status;
+use MediaWiki\Extension\LDAPUserInfo\IUserInfoConditionalModifier;
+use Status;
 
-class Realname extends Base {
+class Realname extends Base implements IUserInfoConditionalModifier {
 
 	/**
 	 *
@@ -17,4 +18,10 @@ class Realname extends Base {
 		return Status::newGood();
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	public function shouldModifyUserInfo( $user, $rawValue ) {
+		return $user->getRealName() !== $rawValue;
+	}
 }
