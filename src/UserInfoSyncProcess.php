@@ -111,7 +111,11 @@ class UserInfoSyncProcess {
 			$modifier->modifyUserInfo( $this->user, $userInfo[$ldapAttribute] );
 		}
 
-		$this->user->saveSettings();
+		try {
+			$this->user->saveSettings();
+		} catch ( MWException $ex ) {
+			return true;
+		}
 
 		return true;
 	}
