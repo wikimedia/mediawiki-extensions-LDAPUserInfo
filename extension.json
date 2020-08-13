@@ -24,9 +24,6 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\LDAPUserInfo\\": "src/"
 	},
-	"TestAutoloadNamespaces": {
-		"MediaWiki\\Extension\\LDAPUserInfo\\Tests\\": "tests/phpunit/"
-	},
 	"Hooks": {
 		"UserLoadAfterLoadFromSession": "MediaWiki\\Extension\\LDAPUserInfo\\Hook\\UserLoadAfterLoadFromSession\\SyncUserInfoAfterLoadSession::callback"
 	},
