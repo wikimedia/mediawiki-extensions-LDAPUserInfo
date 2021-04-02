@@ -5,7 +5,8 @@ namespace MediaWiki\Extension\LDAPUserInfo\Hook\UserLoadAfterLoadFromSession;
 use MediaWiki\Extension\LDAPProvider\Hook\UserLoadAfterLoadFromSession;
 use MediaWiki\Extension\LDAPUserInfo\Config;
 use MediaWiki\Extension\LDAPUserInfo\UserInfoSyncProcess;
-use User;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserOptionsLookup;
 
 class SyncUserInfoAfterLoadSession extends UserLoadAfterLoadFromSession {
 
@@ -18,7 +19,8 @@ class SyncUserInfoAfterLoadSession extends UserLoadAfterLoadFromSession {
 	protected function doSync() {
 		$this->user->clearInstanceCache();
 		$this->user->loadFromDatabase();
-		$this->user->getOptions( User::GETOPTIONS_EXCLUDE_DEFAULTS );
+		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+		$userOptionsLookup->getOptions( $this->user, UserOptionsLookup::EXCLUDE_DEFAULTS );
 
 		$process = new UserInfoSyncProcess(
 			$this->user,
