@@ -6,6 +6,7 @@ use ConfigException;
 use MediaWiki\Extension\LDAPUserInfo\Config;
 use MediaWiki\Extension\LDAPUserInfo\IUserInfoConditionalModifier;
 use MediaWiki\Extension\LDAPUserInfo\IUserInfoModifier;
+use MediaWiki\MediaWikiServices;
 use Status;
 use User;
 
@@ -45,7 +46,14 @@ class GenericProperty extends Base implements IUserInfoConditionalModifier {
 	 * @throws ConfigException
 	 */
 	public function modifyUserInfo( $user, $rawValue ) {
-		$user->setOption( $this->propertyName, $this->getNormalizedValue( $rawValue ) );
+		$services = MediaWikiServices::getInstance();
+		if ( method_exists( $services, 'getUserOptionsManager' ) ) {
+			// MW 1.35+
+			$services->getUserOptionsManager()
+				->setOption( $user, $this->propertyName, $this->getNormalizedValue( $rawValue ) );
+		} else {
+			$user->setOption( $this->propertyName, $this->getNormalizedValue( $rawValue ) );
+		}
 		return Status::newGood();
 	}
 
