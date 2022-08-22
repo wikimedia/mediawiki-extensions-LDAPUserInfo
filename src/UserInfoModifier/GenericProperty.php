@@ -46,14 +46,8 @@ class GenericProperty extends Base implements IUserInfoConditionalModifier {
 	 * @throws ConfigException
 	 */
 	public function modifyUserInfo( $user, $rawValue ) {
-		$services = MediaWikiServices::getInstance();
-		if ( method_exists( $services, 'getUserOptionsManager' ) ) {
-			// MW 1.35+
-			$services->getUserOptionsManager()
-				->setOption( $user, $this->propertyName, $this->getNormalizedValue( $rawValue ) );
-		} else {
-			$user->setOption( $this->propertyName, $this->getNormalizedValue( $rawValue ) );
-		}
+		MediaWikiServices::getInstance()->getUserOptionsManager()
+			->setOption( $user, $this->propertyName, $this->getNormalizedValue( $rawValue ) );
 		return Status::newGood();
 	}
 
@@ -61,7 +55,8 @@ class GenericProperty extends Base implements IUserInfoConditionalModifier {
 	 * @inheritDoc
 	 */
 	public function shouldModifyUserInfo( $user, $rawValue ) {
-		return $user->getOption( $this->propertyName ) !== $this->getNormalizedValue( $rawValue );
+		return MediaWikiServices::getInstance()->getUserOptionsManager()
+			->getOption( $user, $this->propertyName ) !== $this->getNormalizedValue( $rawValue );
 	}
 
 	/**
