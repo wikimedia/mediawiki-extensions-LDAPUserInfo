@@ -1,6 +1,6 @@
 {
 	"name": "LDAPUserInfo",
-	"version": "1.0.0",
+	"version": "3.0.0-alpha",
 	"author": [
 		"Cindy Cicalese",
 		"[https://mediawiki.org/wiki/User:MarkAHershberger Mark A. Hershberger]",
@@ -11,9 +11,9 @@
 	"license-name": "GPL-2.0",
 	"type": "other",
 	"requires": {
-		"MediaWiki": ">= 1.35.0",
+		"MediaWiki": ">= 1.39.0",
 		"extensions": {
-			"LDAPProvider": "~1.0"
+			"LDAPProvider": "~2.0"
 		}
 	},
 	"MessagesDirs": {
