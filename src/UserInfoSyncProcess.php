@@ -123,7 +123,10 @@ class UserInfoSyncProcess {
 			) {
 				$hasChanges = true;
 				$logger->info( "Set '$origModifierKey' with raw value {$userInfo[$ldapAttribute]}" );
-				$modifier->modifyUserInfo( $this->user, $userInfo[$ldapAttribute] );
+
+				$attributeValue = $this->getFromUserInfo( $userInfo, $ldapAttribute );
+
+				$modifier->modifyUserInfo( $this->user, $attributeValue );
 			}
 		}
 
@@ -134,4 +137,21 @@ class UserInfoSyncProcess {
 		return true;
 	}
 
+	/**
+	 * @param array $result
+	 * @param string $key
+	 * @return string
+	 */
+	private function getFromUserInfo( $result, $key ) {
+		$value = '';
+		if ( !isset( $result[$key] ) ) {
+			return $value;
+		}
+		$value = $result[$key];
+		if ( is_array( $value ) ) {
+			$firstItemKey = array_key_first( $value );
+			$value = $value[$firstItemKey];
+		}
+		return $value;
+	}
 }
