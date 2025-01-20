@@ -7,8 +7,8 @@ use MediaWiki\Extension\LDAPUserInfo\Config;
 use MediaWiki\Extension\LDAPUserInfo\IUserInfoConditionalModifier;
 use MediaWiki\Extension\LDAPUserInfo\IUserInfoModifier;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\User;
 use Status;
-use User;
 
 class GenericProperty extends Base implements IUserInfoConditionalModifier {
 
