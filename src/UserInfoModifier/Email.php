@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\LDAPUserInfo\UserInfoModifier;
 
 use MediaWiki\Extension\LDAPUserInfo\IUserInfoConditionalModifier;
+use MediaWiki\User\User;
 use Status;
-use User;
 
 class Email extends Base implements IUserInfoConditionalModifier {
 
