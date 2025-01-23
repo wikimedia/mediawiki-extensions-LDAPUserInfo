@@ -32,7 +32,7 @@ class GenericProperty extends Base implements IUserInfoConditionalModifier {
 	/**
 	 *
 	 * @param string $mappingKey e.g. "property.gender"
-	 * @param Config $domainConfig
+	 * @param MediaWikiConfig $domainConfig
 	 * @return IUserInfoModifier
 	 */
 	public static function factory( $mappingKey, $domainConfig ) {
