@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\LDAPUserInfo;
 
 use Exception;
+use MediaWiki\Config\Config;
 use MediaWiki\Extension\LDAPProvider\Client;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\User;
@@ -19,7 +20,7 @@ class UserInfoSyncProcess {
 
 	/**
 	 *
-	 * @var \Config
+	 * @var Config
 	 */
 	private $domainConfig = null;
 
@@ -44,7 +45,7 @@ class UserInfoSyncProcess {
 	/**
 	 * UserInfoSyncProcess constructor.
 	 * @param User $user
-	 * @param \Config $domainConfig
+	 * @param Config $domainConfig
 	 * @param \MediaWiki\Extension\LDAPProvider\Client $client
 	 * @param array $callbackRegistry
 	 */
