@@ -6,9 +6,9 @@ use Exception;
 use MediaWiki\Config\Config;
 use MediaWiki\Extension\LDAPProvider\Client;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Status\Status;
 use MediaWiki\User\User;
 use MWException;
-use Status;
 
 class UserInfoSyncProcess {
 
