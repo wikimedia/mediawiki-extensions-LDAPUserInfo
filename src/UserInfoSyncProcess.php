@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\LDAPUserInfo;
 
 use Exception;
 use MediaWiki\Config\Config as MediaWikiConfig;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\LDAPProvider\Client;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Status\Status;
@@ -81,7 +82,7 @@ class UserInfoSyncProcess {
 
 	/**
 	 * @return bool
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 * @throws MWException
 	 */
 	private function doSync() {

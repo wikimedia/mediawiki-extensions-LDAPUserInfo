@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\LDAPUserInfo\UserInfoModifier;
 
-use ConfigException;
 use MediaWiki\Config\Config as MediaWikiConfig;
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\LDAPUserInfo\Config;
 use MediaWiki\Extension\LDAPUserInfo\IUserInfoConditionalModifier;
 use MediaWiki\Extension\LDAPUserInfo\IUserInfoModifier;
