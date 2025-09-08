@@ -8,13 +8,11 @@ use MediaWiki\Extension\LDAPUserInfo\IUserInfoModifier;
 abstract class Base implements IUserInfoModifier {
 
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $domainConfig = null;
 
 	/**
-	 *
 	 * @param Config $domainConfig
 	 */
 	public function __construct( $domainConfig ) {
@@ -22,7 +20,6 @@ abstract class Base implements IUserInfoModifier {
 	}
 
 	/**
-	 *
 	 * @param string $mappingKey
 	 * @param Config $domainConfig
 	 * @return IUserInfoModifier

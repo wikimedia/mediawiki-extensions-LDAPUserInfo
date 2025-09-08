@@ -14,31 +14,26 @@ use MWException;
 class UserInfoSyncProcess {
 
 	/**
-	 *
 	 * @var User
 	 */
 	private $user = null;
 
 	/**
-	 *
 	 * @var MediaWikiConfig
 	 */
 	private $domainConfig = null;
 
 	/**
-	 *
 	 * @var array
 	 */
 	protected $callbackRegistry = [];
 
 	/**
-	 *
 	 * @var Client
 	 */
 	private $client = null;
 
 	/**
-	 *
 	 * @var Status
 	 */
 	private $status = null;

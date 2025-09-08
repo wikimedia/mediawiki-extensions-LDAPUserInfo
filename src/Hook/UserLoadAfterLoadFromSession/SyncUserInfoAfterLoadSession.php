@@ -35,7 +35,6 @@ class SyncUserInfoAfterLoadSession extends UserLoadAfterLoadFromSession {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getDomainConfigSection() {
