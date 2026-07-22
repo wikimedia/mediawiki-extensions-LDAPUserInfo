@@ -14,13 +14,11 @@ use MediaWiki\User\User;
 class GenericProperty extends Base implements IUserInfoConditionalModifier {
 
 	/**
-	 *
 	 * @var string
 	 */
 	protected $propertyName = '';
 
 	/**
-	 *
 	 * @param MediaWikiConfig $domainConfig
 	 * @param string $propertyName
 	 */
@@ -30,7 +28,6 @@ class GenericProperty extends Base implements IUserInfoConditionalModifier {
 	}
 
 	/**
-	 *
 	 * @param string $mappingKey e.g. "property.gender"
 	 * @param MediaWikiConfig $domainConfig
 	 * @return IUserInfoModifier

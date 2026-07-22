@@ -9,7 +9,6 @@ use MediaWiki\User\User;
 class Realname extends Base implements IUserInfoConditionalModifier {
 
 	/**
-	 *
 	 * @param User $user
 	 * @param string $rawValue
 	 * @return Status

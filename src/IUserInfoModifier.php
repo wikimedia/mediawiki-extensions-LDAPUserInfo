@@ -8,7 +8,6 @@ use MediaWiki\User\User;
 interface IUserInfoModifier {
 
 	/**
-	 *
 	 * @param User $user
 	 * @param string $rawValue
 	 * @return Status

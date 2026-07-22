@@ -10,6 +10,7 @@ use MediaWiki\User\Options\UserOptionsLookup;
 
 class SyncUserInfoAfterLoadSession extends UserLoadAfterLoadFromSession {
 
+	/** @var string */
 	protected $sessionDataKey = 'ldap-user-sync-last';
 
 	/**
@@ -35,7 +36,6 @@ class SyncUserInfoAfterLoadSession extends UserLoadAfterLoadFromSession {
 	}
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getDomainConfigSection() {
