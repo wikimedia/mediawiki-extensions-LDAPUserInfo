@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\LDAPUserInfo\Hook\UserLoadAfterLoadFromSession;
 
+use MediaWiki\Config\ConfigException;
 use MediaWiki\Extension\LDAPProvider\Hook\UserLoadAfterLoadFromSession;
 use MediaWiki\Extension\LDAPUserInfo\Config;
 use MediaWiki\Extension\LDAPUserInfo\UserInfoSyncProcess;
@@ -15,7 +16,7 @@ class SyncUserInfoAfterLoadSession extends UserLoadAfterLoadFromSession {
 
 	/**
 	 * @return bool
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	protected function doSync() {
 		$this->user->clearInstanceCache();
